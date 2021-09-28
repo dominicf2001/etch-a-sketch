@@ -1,0 +1,15 @@
+.grid {
+    display: grid;
+    grid-template-rows: repeat(16, 25px);
+    grid-template-columns: repeat(16, 25px);
+    width: min-content;
+    margin: 25vh auto;
+}
+
+.grid-div {
+    outline: solid 1px black;
+}
+
+.grid-div:hover {
+    background: black;
+}
