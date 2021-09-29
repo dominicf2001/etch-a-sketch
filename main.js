@@ -1,23 +1,50 @@
-const main = document.createElement('main');
+// initalize variables
 
-const div = document.createElement('div');
+const gridSection = document.querySelector('section');
 
-document.body.appendChild(main);
+const clearBtn = document.querySelector('button')
 
-main.classList.add('grid');
+const gridTile = document.createElement('div');
 
-div.classList.add('grid-div')
+gridTile.classList.add('grid-tile')
 
-for (let i = 1; i <= 256; i++) {
-  main.append(div.cloneNode());  
-}
 
-const divs = document.querySelectorAll('div')
+// Creates etch-a-sketch grid based on specified size (Default: 16x16)
 
 function addColor (e) {
-    this.style.backgroundColor = 'black';
+        this.style.backgroundColor = 'black';
+    }
+
+function createGrid (gridsize) {
+    gridSection.style.cssText = `grid-template-rows: repeat(${gridsize}, 1fr); grid-template-columns: repeat(${gridsize}, 1fr)`;
+    gridSection.textContent = ''
+
+    for (let i = 1; i <= gridsize * gridsize; i++) {
+        gridSection.appendChild(gridTile.cloneNode());  
+      }
+    
+    const gridTiles = document.querySelectorAll('div')
+
+    gridTiles.forEach(gridTile => {
+        gridTile.style.backgroundColor = '';
+        gridTile.addEventListener('mouseover', addColor);
+    })
 }
 
-divs.forEach(div => {
-    div.addEventListener('mouseover', addColor)
+createGrid(16)
+
+// Reset button with gridsize prompt
+
+clearBtn.addEventListener('click', () => {
+    let gridsize = prompt('Enter a grid size as a single integer (16, 32, 64, etc.)');
+
+    if (gridsize > 100) {
+        alert('Grid size must be less than 100x100');
+    }
+    else if (typeof Math.floor(gridsize) != 'number') {
+        alert('Grid size must be a number');
+    }
+    else {
+        createGrid(Math.floor(gridsize));
+    }
 })
