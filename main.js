@@ -41,7 +41,7 @@ clearBtn.addEventListener('click', () => {
     if (gridsize > 100) {
         alert('Grid size must be less than 100x100');
     }
-    else if (typeof Math.floor(gridsize) != 'number') {
+    else if (typeof gridsize != 'number') {
         alert('Grid size must be a number');
     }
     else {
