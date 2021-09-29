@@ -15,10 +15,11 @@ button {
     width: 64vw;
     height: 64vw;
     margin: auto;
+    outline: solid black 5px;
 }
 
 .grid-tile {
-    outline: solid 1px black;
+    
 }
 
 .grid-div:hover {
